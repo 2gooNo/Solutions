@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    "stdio.h": "c",
+    "__locale": "cpp",
+    "locale": "cpp"
+  }
+}
