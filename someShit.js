@@ -1,4 +1,3 @@
-const g = 7;
-const b = 4;
-
-console.log(g / b);
+for(i=0;i<5;i++){
+console.log("hello world");
+}
