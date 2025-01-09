@@ -3,36 +3,47 @@
 #include <algorithm>
 using namespace std;
 
+int counter (string a,string b){
+    long long count=0;
+for (int  i = 0; i+b.size()-1 <a.size(); i++)
+{
+    string temp=a.substr(i,b.size());
+     if(b==temp){
+         count++;
+}
+}
+return count;
+}
+
 int main()
 {
-    long long n, i, x, j,b,c;
-    cin >> n>>b;
-    vector <int> d;
-    for(i=0;i<b;i++){
-        cin >>c;
-        d.push_back(c);
+    int n,i;
+    string s;
+    cin >> n>>s;
+    vector<string> fib(n+12);
+    fib[1]="A";
+    fib[2]="B";
+    for(i=3;i<=12;i++){
+            fib[i]=fib[i-1]+fib[i-2];
     }
-    vector <int> a;
-    a.push_back(1);
-     a.push_back(2);
-        a.push_back(4);
-        bool e;
-    for (i = 3; i < n; i++)
-    {
-        e=0;
-        for(j=0;j<d.size();j++){
-            if(i==d[j]-1){
-                e=1;
-                d.erase(d.begin()+j);
-                break;
-            }
-        }
-        if(e){
-           a[i]=0;
-        }else{
-              a[i] = a[i - 2] + a[i - 1]+a[i-3];
-        }
+    if(n<=12){
+        cout << counter(fib[n],s)<<endl;
+        return 0;
     }
-    cout <<a[n-1];
+        string fib_end[n+1];
+        fib_end[12]=fib[12].substr(fib[12].size()-s.size()+1);
+        fib_end[11]=fib[11].substr(fib[11].size()-s.size()+1);
+        string fib_start[n+1];
+        fib_start[12]=fib[12].substr(0,s.size()-1);
+        fib_start[11]=fib[11].substr(0,s.size()-1);
+        long long fib_count[n+1];
+        fib_count[11]=counter(fib[11],s);
+        fib_count[12]=counter(fib[12],s);
+    for(i=13;i<=n;i++){
+        fib_end[i]=fib_end[i-2];
+        fib_start[i]=fib_start[i-1];
+        fib_count[i]=fib_count[i-1]+fib_count[i-2]+counter(fib_end[i-1]+fib_start[i-2],s);
+    }
+    cout <<fib_count[n]<<endl;
     return 0;
 }
