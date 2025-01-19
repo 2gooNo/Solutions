@@ -5,8 +5,8 @@ using namespace std;
 int main()
 {
     
-    freopen("shuffle.in","r",stdin);
-    freopen("shuffle.out","w",stdout);
+    // freopen("shuffle.in","r",stdin);
+    // freopen("shuffle.out","w",stdout);
 
     int n, i,j;
     cin >> n;
